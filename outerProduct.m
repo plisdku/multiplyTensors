@@ -18,14 +18,17 @@ else
 
     C = zeros([szA numel(B)]);
     
-    indicesA = repmat({':'}, 1, numel(szA));
-    indicesC = indicesA;
-    lastIndex = length(indicesC) + 1;
-
+    %indicesA = repmat({':'}, 1, numel(szA));
+    %indicesC = indicesA;
+    %lastIndex = length(indicesC) + 1;
+    
+    numelA = numel(A);
+    idx0 = 1;
     for db = 1:length(B)
-
-        indicesC{lastIndex} = db;
-        C(indicesC{:}) = A*B(db);
+        C(idx0:(idx0+numelA-1)) = A*B(db);
+        idx0 = idx0 + numelA;
+        %indicesC{lastIndex} = db;
+        %C(indicesC{:}) = A*B(db);
         
     end
 
